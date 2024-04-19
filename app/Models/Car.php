@@ -9,6 +9,8 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $fillable=['name','model','price'];
+
     public function orders()
     {
         return $this->hasMany(Order::class);

@@ -4,6 +4,9 @@
     <div class="col-lg-6 m-3">
         <h1>Catalogo auto</h1>
     </div>
+    <div class="col-lg-3 text-end m-3">
+        <a class="btn btn-primary"  href="{{  route('cars.create') }}">Aggiungi una nuova macchina al catalogo</a>
+    </div>
 </div>
 
 
@@ -16,6 +19,7 @@
                 <th class="text-primary">Marca</th>
                 <th class="text-primary">Modello</th>
                 <th class="text-primary">Prezzo</th>
+                <th class="text-primary">Ordini</th>
                 <th></th>
             </thead>
 
@@ -24,8 +28,17 @@
                     <tr>
                         <td>{{ $car->name }}</td>
                         <td>{{ $car->model }}</td>
-                        <td>{{ $car->price }}</td>
-                        <td></td>
+                        <td>{{ Number::currency( $car->price , in: 'EUR', locale: 'it') }}</td>
+                        <td>
+                            <ul class="list-group">
+                                @foreach($car->orders as $order) 
+                                <li class="list-group-item">{{ $order->customer }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-secondary" href="{{ route('cars.edit', $car) }}">Modifica</a>
+                        </td>
                     </tr>
             @endforeach
                 

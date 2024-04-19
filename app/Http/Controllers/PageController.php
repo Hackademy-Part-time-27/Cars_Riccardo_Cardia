@@ -12,10 +12,4 @@ class PageController extends Controller
         return view('welcome');
     }
 
-    public function index()
-    {
-        return view('cars.index',[
-            'cars'=> Car::all(),
-        ]);
-    }
 }

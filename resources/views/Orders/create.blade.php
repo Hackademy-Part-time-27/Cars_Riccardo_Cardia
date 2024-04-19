@@ -34,7 +34,8 @@
 
             <div class="mb-3">
                 <label for="customer" class="form-label">Proprietario</label>
-                <input type="text" class="form-control" id="customer" name="customer" >
+                <input type="text" class="form-control @error('customer') is-invalid @enderror " id="customer" name="customer" >
+                @error('customer') <span class="text-danger ">{{ $message }}</span>  @enderror
             </div>
 
             <div class="mb-3">

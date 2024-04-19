@@ -79,6 +79,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->accessories()->detach();
+        $order->delete();
+
+
+        return redirect()->back()->with(['success'=>'Ordine Eliminato Correttamente']);
     }
 }
