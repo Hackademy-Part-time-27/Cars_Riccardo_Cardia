@@ -4,9 +4,13 @@
     <div class="col-lg-6 m-3">
         <h1>Catalogo auto</h1>
     </div>
+    <div class="col-lg-6 m-3">
+        <x-success/>
+    </div>
     <div class="col-lg-3 text-end m-3">
         <a class="btn btn-primary"  href="{{  route('cars.create') }}">Aggiungi una nuova macchina al catalogo</a>
     </div>
+
 </div>
 
 
@@ -38,6 +42,13 @@
                         </td>
                         <td>
                             <a class="btn btn-sm btn-secondary" href="{{ route('cars.edit', $car) }}">Modifica</a>
+                            <form class="d-inline" action="{{ route('cars.delete', $car ) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-sm btn-danger" type="submit">Elimina</button>
+                            
+                            </form>
                         </td>
                     </tr>
             @endforeach

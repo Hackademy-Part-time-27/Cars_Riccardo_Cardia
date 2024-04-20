@@ -11,4 +11,5 @@ Route::get('/cars/create',[CarController::class,'create'])->name('cars.create');
 Route::post('/cars/store',[CarController::class,'store'])->name('cars.store');
 Route::get('/cars/{car}/edit',[CarController::class,'edit'])->name('cars.edit');
 Route::put('/cars/{car}/update',[CarController::class,'update'])->name('cars.update');
+Route::delete('cars/{car}/delete',[CarController::class, 'destroy'])->name('cars.delete');
 Route::resource('/orders',OrderController::class);

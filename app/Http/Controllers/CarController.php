@@ -49,13 +49,20 @@ class CarController extends Controller
         ]);
     }
 
-    public function update(Car  $car)
+    public function update(CarRequest $request ,Car  $car)
     {
-        return ciao;
+        $car->update($request->all());
+        return redirect()->back()->with(['success'=>'Auto modificata correttamente']);
     }
 
-    public function destroy()
+    public function destroy(Car $car)
     {
+        /*foreach($car->orders as $order){
+            $order->detach();
+        }*/
 
+        //$car->orders()->detach();
+        $car->delete();
+        return redirect()->back()->with(['success'=>'Auto Eliminata correttamente']);
     }
 }
